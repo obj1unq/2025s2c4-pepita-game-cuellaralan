@@ -1,3 +1,4 @@
+import direcciones.*
 import wollok.game.*
 import pepita.*
 import extras.*
@@ -12,6 +13,11 @@ program pepitaGame {
 	game.boardGround("fondo2.jpg")
 	game.addVisual(silvestre)
 	game.addVisual(nido)
-	game.addVisualCharacter(pepita)
+	//game.addVisualCharacter(pepita)
+	game.addVisual(pepita)
+	keyboard.up().onPressDo({pepita.mover(arriba)})
+	keyboard.down().onPressDo({pepita.mover(abajo)})
+	keyboard.left().onPressDo({pepita.mover(izquierda)})
+	keyboard.right().onPressDo({pepita.mover(derecha)})
 	game.start()	
 }
