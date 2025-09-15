@@ -23,5 +23,6 @@ program pepitaGame {
 	keyboard.left().onPressDo({pepita.mover(izquierda)})
 	keyboard.right().onPressDo({pepita.mover(derecha)})
 	keyboard.c().onPressDo({pepita.comerAca()})
+	game.onTick(800, "pepita pierde altura", {pepita.bajarPorGravedad()})
 	game.start()	
 }

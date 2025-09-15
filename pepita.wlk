@@ -1,3 +1,4 @@
+import direcciones.*
 import extras.*
 import wollok.game.*
 
@@ -56,5 +57,15 @@ object pepita {
 			comida.desaparecer()
 		}	
 	}
+
+	method bajarPorGravedad() {
+		if(self.puedeDescender())
+		{
+	  		position = abajo.siguiente(position)
+		}
+	}
+
+	method puedeDescender() = position.y() > 0 && !self.alncanzoNido() && self.energiaSuficiente()
+
 }
 
