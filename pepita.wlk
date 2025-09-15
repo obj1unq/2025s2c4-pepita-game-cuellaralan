@@ -10,8 +10,9 @@ object pepita {
 	var property position = game.at(0, 1)
 	//para mostrar al personaje debe entender mensaje image
 	method image() = "pepita-" + self.estado() + ".png"
+	
 	method estado() {
-	  return if(!self.puedeVolar()){"gris"}
+	  return if(!self.puedeVolar()&& !self.alncanzoNido()){"gris"}
 	  else if(self.alncanzoNido()) {"grande"}
 	  else {"normal"}
 	}
@@ -45,5 +46,15 @@ object pepita {
 	method puedeVolar() = self.energiaSuficiente() && !self.esAtrapada() 
 
 	method energiaSuficiente() = energia > 0
+
+	method alimentoQueEstaEnSuPosicion() = game.uniqueCollider(self)
+
+	method comerAca() {
+		const comida = self.alimentoQueEstaEnSuPosicion()
+		if(comida != null) {
+			self.comer(comida)
+			comida.desaparecer()
+		}	
+	}
 }
 
