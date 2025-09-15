@@ -3,7 +3,7 @@ import extras.*
 import wollok.game.*
 
 object pepita {
-	var energia = 100
+	var energia = 1000
 	const costePorKm = 9
 	const cazador = silvestre	
 	const hogar = nido
@@ -38,7 +38,7 @@ object pepita {
 	}
 
 	method mover(direccion) {
-		if(self.puedeVolar() && !self.alncanzoNido()){
+		if(self.puedeVolar() && !self.alncanzoNido() && self.dentroDelTablero(direccion)){
 			position = direccion.siguiente(position)
 			self.volar(1)
 		}
@@ -48,6 +48,12 @@ object pepita {
 
 	method energiaSuficiente() = energia > 0
 
+	method dentroDelTablero(direccion) {
+		const siguientePosicion = direccion.siguiente(position)
+		return (siguientePosicion.y() >= 0 && siguientePosicion.y() <= game.height()-1)&&
+		(siguientePosicion.x() >= 0 && siguientePosicion.x() <= game.width()-1) 
+		
+	}
 	method alimentoQueEstaEnSuPosicion() = game.uniqueCollider(self)
 
 	method comerAca() {
