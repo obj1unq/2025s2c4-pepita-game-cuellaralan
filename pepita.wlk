@@ -42,6 +42,7 @@ object pepita {
 			position = direccion.siguiente(position)
 			self.volar(1)
 		}
+
 	}
 
 	method puedeVolar() = self.energiaSuficiente() && !self.esAtrapada() 
@@ -57,11 +58,14 @@ object pepita {
 	method alimentoQueEstaEnSuPosicion() = game.uniqueCollider(self)
 
 	method comerAca() {
-		const comida = self.alimentoQueEstaEnSuPosicion()
-		if(comida != null) {
+		try{
+			const comida = self.alimentoQueEstaEnSuPosicion()
 			self.comer(comida)
 			comida.desaparecer()
-		}	
+		}catch e : Exception {
+			//console.println("no hay nada para comer")
+			game.say(self, "no hay nada para comer")
+		}
 	}
 
 	method bajarPorGravedad() {
