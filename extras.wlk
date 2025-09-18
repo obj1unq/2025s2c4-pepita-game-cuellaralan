@@ -16,10 +16,17 @@ object silvestre {
             return presa.position().x()
         }else{return 3}
     }
+    method queHagoConVos(alguien) {
+	  alguien.perdiste()
+	}
 }
 
 object nido {
   method image() = "nido.png"
   var property position = game.at(8, 8)
+
+  method queHagoConVos(alguien) {
+	  alguien.ganar()
+	}
 }
 

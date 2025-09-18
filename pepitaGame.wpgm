@@ -4,6 +4,8 @@ import pepita.*
 import extras.*
 import comidas.*
 import obstaculos.*
+import niveles.*
+
 
 
 program pepitaGame {
@@ -14,24 +16,7 @@ program pepitaGame {
 	//search assets in assets folder, for example, for the background
 	//Valor por defecto game.ground("ground.png")
 	game.boardGround("fondo2.jpg")
-	game.addVisual(silvestre)
-	game.addVisual(nido)
-	game.addVisual(manzana)
-	game.addVisual(alpiste)
-	game.addVisual(pared1)
-	game.addVisual(pared2)
-	//game.addVisualCharacter(pepita)
-	game.addVisual(pepita)
-	keyboard.up().onPressDo({pepita.mover(arriba)})
-	keyboard.down().onPressDo({pepita.mover(abajo)})
-	keyboard.left().onPressDo({pepita.mover(izquierda)})
-	keyboard.right().onPressDo({pepita.mover(derecha)})
-	keyboard.c().onPressDo({pepita.comerAca()})
-	game.onTick(8000, "pepita pierde altura", {pepita.bajarPorGravedad()})
-	 /*game.whenCollideDo(pared, {elemento => 
-	 elemento.volver()})
-	 
-	 onCollideDo(visual, action)
-	 */
+	nivel1.iniciar()	
+
 	game.start()	
 }

@@ -16,16 +16,24 @@ object manzana {
 	method desaparecer(){
 		game.removeVisual(self)
 	}
+
+	method queHagoConVos(alguien) {
+	  alguien.comerAca(self)
+	}
 }
 
 object alpiste {
 	var property position = game.at(5, 5)
 	method energiaQueOtorga() {
-		return 20
+		return 40
 	} 
 	method image() = "alpiste.png"
 	method desaparecer(){
 		game.removeVisual(self)
+	}
+
+	method queHagoConVos(alguien) {
+	  alguien.comerAca(self)
 	}
 }
 
