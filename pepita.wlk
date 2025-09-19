@@ -15,11 +15,11 @@ object pepita {
 	//al agregar visual necesita entender el mensaje position()
 	var property position = game.at(0, 1)
 	//para mostrar al personaje debe entender mensaje image
-	method image() = "pepita-" + self.estado() + ".png"
+	method image() = "piolin-" + self.estado() + ".png"
 	
 	method estado() {
-	  return if(!self.puedeVolar()&& !self.alncanzoNido()){"gris"}
-	  else if(self.alncanzoNido()) {"grande"}
+	  return if(!self.puedeVolar()&& !self.alncanzoNido()){"atrapado"}
+	  else if(self.alncanzoNido()) {"nido"}
 	  else {"normal"}
 	}
 
@@ -30,8 +30,8 @@ object pepita {
 		energia += comida.energiaQueOtorga()
 	}	
 	//texto que se muestra en la pantalla de juego para mostrar la vida
-	method text() = "Energia: \n" + energia
-	method textColor() = "ff7c00"
+	method text() = "E: \n" + energia
+	method textColor() = "ffcc00"
 	method volar(kms) {
 		energia -= self.energiaNecesaria(kms) 
 	}
